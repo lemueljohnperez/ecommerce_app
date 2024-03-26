@@ -117,7 +117,7 @@ export default function Login(props) {
 
     return (
         (user.id !== null)?
-        <Navigate to ="/courses"/>
+        <Navigate to ="/products"/>
         :
         <Form onSubmit={(e)=>authenticate(e)}>
             <h1 className="my-5 text-center">Login</h1>
