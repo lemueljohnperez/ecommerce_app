@@ -6,7 +6,7 @@ export default function Home() {
 
 	const data = {
         title: "ECommerce App",
-        content: "Opportunities for everyone, everywhere",
+        content: "Shopping for everyone, everywhere",
         destination: "/products",
         label: "Buy now!"
     }

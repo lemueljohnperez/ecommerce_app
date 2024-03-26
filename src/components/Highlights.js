@@ -15,10 +15,10 @@ export default function Highlights(){
 				<Card className="cardHighlight p-3">
 				  <Card.Body>
 				    <Card.Title>
-				    	<h2>Learn from Home</h2>
+				    	<h2>Lorem Ipsum</h2>
 				    </Card.Title>
 				    <Card.Text>
-		Abyssinian american shorthair, and cougar russian blue american bobtail. Persian cougar. Lion cornish rex. Panther maine coon, or himalayan sphynx, british shorthair for devonshire rex so panther. Donskoy birman bobcat. Ocelot norwegian forest abyssinian . Jaguar tomcat siamese jaguar but abyssinian . Scottish fold persian. Malkin leopard thai. Turkish angora kitty so american bobtail devonshire rex, kitty. American shorthair tomcat yet donskoy maine coon egyptian mau, yet british shorthair scottish fold. Cornish rex munchkin cornish rex or birman thai. Lion singapura but siberian panther and malkin. Cheetah tom for mouser and savannah savannah scottish fold. Siberian burmese russian blue havana brown ocicat siamese himalayan. British shorthair american shorthair grimalkin, abyssinian so turkish angora. Manx tabby bobcat turkish angora. Malkin himalayan.
+				    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices neque. Morbi tincidunt ornare massa eget egestas purus viverra. Mattis enim ut tellus elementum sagittis vitae et leo. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Facilisis volutpat est velit egestas dui id ornare. Risus nec feugiat in fermentum posuere urna nec tincidunt. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Quis risus sed vulputate odio ut enim blandit. Elementum sagittis vitae et leo duis ut diam quam. Urna molestie at elementum eu facilisis sed. Mattis nunc sed blandit libero. Nulla aliquet enim tortor at auctor urna nunc id cursus. Amet purus gravida quis blandit turpis cursus. Curabitur vitae nunc sed velit. Imperdiet dui accumsan sit amet nulla facilisi. Turpis tincidunt id aliquet risus feugiat in ante metus. Molestie nunc non blandit massa enim. Aenean euismod elementum nisi quis.
 				    </Card.Text>
 				  </Card.Body>
 				</Card>
@@ -28,10 +28,10 @@ export default function Highlights(){
 				<Card className="cardHighlight p-3">
 				  <Card.Body>
 				    <Card.Title>
-				    	<h2>Study Now, Pay Later</h2>
+				    	<h2>Lorem Ipsum</h2>
 				    </Card.Title>
 				    <Card.Text>
-		Abyssinian american shorthair, and cougar russian blue american bobtail. Persian cougar. Lion cornish rex. Panther maine coon, or himalayan sphynx, british shorthair for devonshire rex so panther. Donskoy birman bobcat. Ocelot norwegian forest abyssinian . Jaguar tomcat siamese jaguar but abyssinian . Scottish fold persian. Malkin leopard thai. Turkish angora kitty so american bobtail devonshire rex, kitty. American shorthair tomcat yet donskoy maine coon egyptian mau, yet british shorthair scottish fold. Cornish rex munchkin cornish rex or birman thai. Lion singapura but siberian panther and malkin. Cheetah tom for mouser and savannah savannah scottish fold. Siberian burmese russian blue havana brown ocicat siamese himalayan. British shorthair american shorthair grimalkin, abyssinian so turkish angora. Manx tabby bobcat turkish angora. Malkin himalayan.
+				    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices neque. Morbi tincidunt ornare massa eget egestas purus viverra. Mattis enim ut tellus elementum sagittis vitae et leo. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Facilisis volutpat est velit egestas dui id ornare. Risus nec feugiat in fermentum posuere urna nec tincidunt. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Quis risus sed vulputate odio ut enim blandit. Elementum sagittis vitae et leo duis ut diam quam. Urna molestie at elementum eu facilisis sed. Mattis nunc sed blandit libero. Nulla aliquet enim tortor at auctor urna nunc id cursus. Amet purus gravida quis blandit turpis cursus. Curabitur vitae nunc sed velit. Imperdiet dui accumsan sit amet nulla facilisi. Turpis tincidunt id aliquet risus feugiat in ante metus. Molestie nunc non blandit massa enim. Aenean euismod elementum nisi quis.
 				    </Card.Text>
 				  </Card.Body>
 				</Card>
@@ -41,10 +41,10 @@ export default function Highlights(){
 				<Card className="cardHighlight p-3">
 				  <Card.Body>
 				    <Card.Title>
-				    	<h2>Be Part of Our Community</h2>
+				    	<h2>Lorem Ipsum</h2>
 				    </Card.Title>
 				    <Card.Text>
-		Abyssinian american shorthair, and cougar russian blue american bobtail. Persian cougar. Lion cornish rex. Panther maine coon, or himalayan sphynx, british shorthair for devonshire rex so panther. Donskoy birman bobcat. Ocelot norwegian forest abyssinian . Jaguar tomcat siamese jaguar but abyssinian . Scottish fold persian. Malkin leopard thai. Turkish angora kitty so american bobtail devonshire rex, kitty. American shorthair tomcat yet donskoy maine coon egyptian mau, yet british shorthair scottish fold. Cornish rex munchkin cornish rex or birman thai. Lion singapura but siberian panther and malkin. Cheetah tom for mouser and savannah savannah scottish fold. Siberian burmese russian blue havana brown ocicat siamese himalayan. British shorthair american shorthair grimalkin, abyssinian so turkish angora. Manx tabby bobcat turkish angora. Malkin himalayan.
+				    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices neque. Morbi tincidunt ornare massa eget egestas purus viverra. Mattis enim ut tellus elementum sagittis vitae et leo. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Facilisis volutpat est velit egestas dui id ornare. Risus nec feugiat in fermentum posuere urna nec tincidunt. Donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum arcu. Quis risus sed vulputate odio ut enim blandit. Elementum sagittis vitae et leo duis ut diam quam. Urna molestie at elementum eu facilisis sed. Mattis nunc sed blandit libero. Nulla aliquet enim tortor at auctor urna nunc id cursus. Amet purus gravida quis blandit turpis cursus. Curabitur vitae nunc sed velit. Imperdiet dui accumsan sit amet nulla facilisi. Turpis tincidunt id aliquet risus feugiat in ante metus. Molestie nunc non blandit massa enim. Aenean euismod elementum nisi quis.
 				    </Card.Text>
 				  </Card.Body>
 				</Card>
