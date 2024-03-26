@@ -11,16 +11,10 @@ console.log(process.env.REACT_APP_API_URL);
 
 export default function Login(props) {
 
-    //deconstruct the user state  and setUser setter function
-    //allows us to consume the User context object and its properties to use for user validation
     const { user, setUser } = useContext(UserContext);
 
-
-
-    // State hooks to store the values of the input fields
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // State to determine whether submit button is enabled or not
     const [isActive, setIsActive] = useState(true);
 
 
@@ -28,7 +22,6 @@ export default function Login(props) {
 
         console.log(process.env.REACT_APP_API_URL);
 
-        // Prevents page redirection via form submission
         e.preventDefault();
         fetch(`${process.env.REACT_APP_API_URL}/users/login`,{
 
@@ -48,35 +41,11 @@ export default function Login(props) {
 
             console.log(data);
 
-            //If no user information is found, the "access" property will not be available and will return undefined
-
-            //if(data.access)
-
-
-            //Using the typeof operator will return a string of the data type of the variable/expression which is why the value being compared is in a string data type
             if(typeof data.access !== "undefined"){
 
-                //Set the token of the authenticated user in the local storage
-                //Syntax:
-                    //localStorage.setItem("propertyName",value);
-                //storing information in the localStorage will make the data persistent even as the page is refreshed
-
-                //We commented out these statements so that there will be no conflict with the user info to be stored
                 localStorage.setItem('token', data.access);
-                
-                //we invoke this function here to retrieve the user details
-                    //the user details will be used to set the value of the user state to id and admin
+
                 retrieveUserDetails(data.access);
-
-
-                //setting the GLOBAL user state to have properties obtained from the local storage
-
-                // setUser({
-                //     access: localStorage.getItem('token')
-                // })
-
-            
-                //alert(`You are now logged in`);
 
                 Swal.fire({
                     title:"Login Successful!",
@@ -84,14 +53,10 @@ export default function Login(props) {
                     text: "Welcome to Zuitt!"
                 })
 
-
-                // Clear input fields after submission
                 setEmail('');
                 setPassword('');
             
             } else if (data.error === "No Email Found") {
-
-                //alert(`Email not found`);
 
                 Swal.fire({
                     title:`${email} not found`,
@@ -101,8 +66,6 @@ export default function Login(props) {
 
 
             } else {
-
-                //alert(`${email} does not exist`)
 
                 Swal.fire({
                     title:`${email} does not exist`,

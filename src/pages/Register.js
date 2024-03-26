@@ -27,13 +27,12 @@ export default function Register(){
     console.log(password);
     console.log(confirmPassword);
 
-
     function registerUser(e){
 
     	// Prevents page redirection via form submission
     	e.preventDefault();
 
-    	fetch('http://localhost:4000/users/register',{
+    	fetch(`${process.env.REACT_APP_API_URL}/users/`,{
 
     		method:'POST',
     		headers:{
@@ -51,9 +50,8 @@ export default function Register(){
     	}).then(res=>res.json())
     	.then(data =>{
 
-    		//data is the response of the api/server after its been proccessed as JS object through our res.json method
     		console.log(data)
-    		//data will only contain an email property if we can properly save our user.
+
     		if(data.message === "Registered Successfully"){
 
     			setFirstName('');
@@ -75,19 +73,12 @@ export default function Register(){
     			alert("Something went wrong")
     		}
 
-
     	})
 
 
 
 
     }
-
-
-
-    //useEffect() has 2 arguments:
-    	//function - represents the side effect you want to perform. This will be executed when the component renders.
-    	//dependency - optional array. The effect will run when there are changes in the component's dependencies. When there is no provided array, the effect will run on every render of the component.
 
     useEffect(()=>{
 
@@ -173,20 +164,12 @@ export default function Register(){
 				/>
 			</Form.Group>
 
-			{/*conditionally render submit button based on the isActive state*/}
 			{isActive ?
 				<Button variant="primary" type="submit" id="submitBtn">Submit</Button>
 				:
 				<Button variant="danger" type="submit" id="submitBtn" disabled>Submit</Button>
 			}
-			
 
-			{/*
-				- Whenever an event is triggered in React JS, an event object is created and can be used to retrieve information regarding the triggered event and gain access to methods that would help in development
-				- Whenever a state of a component changes, the component rerenders the whole component executing any code found in the component. This is the reason why every individual input added to a form input prints out a console message.
-				- The "e.target.value" property allows us to gain access the the input field's current value to be used when submitting form data.
-
-			*/}
 		</Form>
 	)
 }
