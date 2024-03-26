@@ -4,18 +4,18 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 
-export default function AddCourse(){
+export default function AddProduct() {
 
     const navigate = useNavigate();
 
     const {user} = useContext(UserContext);
 
     //input states
-    const [name,setName] = useState("");
-    const [description,setDescription] = useState("");
-    const [price,setPrice] = useState("");
+    const [name, setName] = useState("");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState("");
 
-    function createCourse(e){
+    function createProduct(e) {
 
         //prevent submit event's default behavior
         e.preventDefault();
@@ -23,7 +23,7 @@ export default function AddCourse(){
         let token = localStorage.getItem('token');
         console.log(token);
 
-        fetch('http://localhost:4000/products/',{
+        fetch(`${process.env.REACT_APP_API_URL}/products/`,{
 
             method: 'POST',
             headers: {
@@ -44,23 +44,23 @@ export default function AddCourse(){
             //data is the response of the api/server after it's been process as JS object through our res.json() method.
             console.log(data);
 
-            if(data.error === "Course already exists"){
+            if(data.error === "Product already exists"){
                 
 
                 Swal.fire({
 
                     icon: "error",
-                    title: "Course already exists.",
+                    title: "Product already exists.",
                     text: data.message
 
                 })
 
-            } else if (data.error === "Failed to save the course") {
+            } else if (data.error === "Failed to save the product") {
 
                 Swal.fire({
 
                     icon: "error",
-                    title: "Unsuccessful Course Creation",
+                    title: "Unsuccessful Product Creation",
                     text: data.message
 
                 })
@@ -70,11 +70,11 @@ export default function AddCourse(){
                 Swal.fire({
 
                     icon:"success",
-                    title: "Course Added"
+                    title: "Product Added"
 
                 })
 
-                navigate("/courses");
+                navigate("/products");
             }
 
         })
@@ -90,7 +90,7 @@ export default function AddCourse(){
             ?
             <>
                 <h1 className="my-5 text-center">Add Product</h1>
-                <Form onSubmit={e => createCourse(e)}>
+                <Form onSubmit={e => createProduct(e)}>
                     <Form.Group>
                         <Form.Label>Name:</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" required value={name} onChange={e => {setName(e.target.value)}}/>
@@ -107,7 +107,7 @@ export default function AddCourse(){
                 </Form>
             </>
             :
-            <Navigate to="/courses" />
+            <Navigate to="/products" />
 
     )
 

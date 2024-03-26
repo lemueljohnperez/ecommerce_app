@@ -51,7 +51,7 @@ export default function EditProduct({product, fetchData}){
 
 		e.preventDefault();
 
-		fetch(`${process.env.REACT_APP_API_URL}/${ productId }`, {
+		fetch(`${process.env.REACT_APP_API_URL}/products/${productId}/update`, {
 	        method: 'PATCH',
 	        headers: {
 	            'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ export default function EditProduct({product, fetchData}){
 						<Form.Group controlId="productPrice">
 							<Form.Label>Price</Form.Label>
 							<Form.Control
-							type="text" 
+							type="number" 
 							value={price}
 							onChange={e=>setPrice(e.target.value)}
 							required/>
