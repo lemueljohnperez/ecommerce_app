@@ -7,16 +7,16 @@
 
 
 ### Requirements
-* [] Register Page
-* [] Login Page
+* [x] Register Page
+* [x] Login Page
 * Products Catalog Page
-	- [] Retrieve All Active Products
-	- [] Retrieve Single Product
+	- [x] Retrieve All Active Products
+	- [x] Retrieve Single Product
 * Admin Dashboard
-	- [] Create Product
-	- [] Retrieve All Products
-	- [] Update Product Information
-	- [] Deactivate/Reactivate Product
+	- x[] Create Product
+	- [x] Retrieve All Products
+	- [x] Update Product Information
+	- [x] Deactivate/Reactivate Product
 * Checkout Order
 	- [] Non-admin User Checkout (Create Order)
 
