@@ -13,7 +13,7 @@
 	- [x] Retrieve All Active Products
 	- [x] Retrieve Single Product
 * Admin Dashboard
-	- x[] Create Product
+	- [x] Create Product
 	- [x] Retrieve All Products
 	- [x] Update Product Information
 	- [x] Deactivate/Reactivate Product
