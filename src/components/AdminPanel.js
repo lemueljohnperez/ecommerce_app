@@ -10,7 +10,6 @@ export default function AdminPanel({ productsData, fetchData }) {
     const [products, setProducts] = useState([])
 
 
-
     useEffect(() => {
         const productsArr = productsData.map(product => {
             return (
@@ -34,7 +33,7 @@ export default function AdminPanel({ productsData, fetchData }) {
     }, [productsData])
 
 
-    return(
+    return (
         <>
             <h1 className="text-center my-5 pt-5"> Admin Dashboard</h1>
             
@@ -54,6 +53,5 @@ export default function AdminPanel({ productsData, fetchData }) {
                 </tbody>
             </Table>    
         </>
-
-        )
+    )
 }

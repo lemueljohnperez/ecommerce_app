@@ -1,15 +1,9 @@
-
 import { Card, Row, Col } from 'react-bootstrap';
 
 
-export default function Highlights(){
-
-	/*
-		- The "className" prop is used in place of the "class" attribute for HTML tags in React JS due to our use of JSX elements.
-	*/
+export default function Highlights() {
 
 	return (
-
 		<Row className="mt-3 mb-3">
 			<Col xs={12} md={4}>
 				<Card className="cardHighlight p-3">
@@ -49,14 +43,6 @@ export default function Highlights(){
 				  </Card.Body>
 				</Card>
 			</Col>
-
-
 		</Row>
-
-
-
 	)
-
-
-
 }

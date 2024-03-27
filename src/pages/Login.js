@@ -62,37 +62,32 @@ export default function Login(props) {
             }
 
             else if (data.error === "No Email Found") {
-
                 Swal.fire({
                     title:`${email} not found`,
                     icon: "error",
                     text: "Check your login credentials and try again."
                 })
-
             }
 
             else {
-
                 Swal.fire({
                     title:`${email} does not exist`,
                     icon: "error",
                     text: "Check your login credentials and try again."
                 })
-
             }
         })
     }
 
 
-    const retrieveUserDetails = (token) =>{
-
+    const retrieveUserDetails = (token) => {
         fetch(`${process.env.REACT_APP_API_URL}/users/details`, {
             headers:{
                 Authorization: `Bearer ${ token }`
             }
         })
-        .then(res=>res.json())
-        .then(data=>{
+        .then(res => res.json())
+        .then(data => {
 
             console.log(data);
             

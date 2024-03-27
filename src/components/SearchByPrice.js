@@ -23,7 +23,9 @@ export default function SearchByPriceRange() {
             const data = await response.json();
             setSearchResults(data);
 
-        } catch (error) {
+        }
+
+        catch (error) {
             console.error('Error fetching data:', error);
         }
     };

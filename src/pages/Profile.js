@@ -6,21 +6,21 @@ import ResetPassword from '../components/ResetPassword';
 import UpdateProfile from '../components/UpdateProfile';
 
 
-export default function Profile(){
+export default function Profile() {
 
     const {user} = useContext(UserContext);
 
     const [ details, setDetails ] = useState({})
 
-    useEffect(()=>{
+    useEffect(() => {
 
-        fetch(`${process.env.REACT_APP_API_URL}/users/details`,{
+        fetch(`${process.env.REACT_APP_API_URL}/users/details`, {
             headers:{
                 Authorization: `Bearer ${ localStorage.getItem('token')}`
             }
         })
-        .then(res=>res.json())
-        .then(data=>{
+        .then(res => res.json())
+        .then(data => {
             console.log(data)
             console.log(data.user)
             console.log(data.user._id)
@@ -29,10 +29,8 @@ export default function Profile(){
 
                 setDetails(data.user);
             }
-
         })
     },[])
-
 
 
     return (
@@ -59,7 +57,5 @@ export default function Profile(){
                 </Col>
             </Row>
         </>
-
     )
-
 }

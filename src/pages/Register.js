@@ -133,7 +133,7 @@ export default function Register() {
 
 	return (
 		(user.id !== null) ?
-		<Navigate to="/courses"/>
+		<Navigate to="/products"/>
 		:
 		<Form onSubmit={(e)=>registerUser(e)}>
 			<h1 className="my-5 text-center">Register</h1>

@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 
 
-export default function EditProduct({product, fetchData}){
+export default function EditProduct({product, fetchData}) {
 	//States
 	const [productId, setProductId] = useState('');
 	const [name, setName] = useState('');
@@ -14,11 +14,11 @@ export default function EditProduct({product, fetchData}){
 
 	//Function for opening the modal
 
-	const openEdit = (productId) =>{
+	const openEdit = (productId) => {
 
 		fetch(`${process.env.REACT_APP_API_URL}/products/${productId}`)
-		.then(res=>res.json())
-		.then(data=>{
+		.then(res => res.json())
+		.then(data => {
 
 			console.log(data);
 			console.log(data.product)
@@ -37,7 +37,7 @@ export default function EditProduct({product, fetchData}){
 
 	}
 
-	const closeEdit = () =>{
+	const closeEdit = () => {
 
 		setShowEdit(false);
 		setName('');
@@ -47,7 +47,7 @@ export default function EditProduct({product, fetchData}){
 	}
 
 	//function to update the course
-	const editProduct = (e, productId) =>{
+	const editProduct = (e, productId) => {
 
 		e.preventDefault();
 
@@ -76,7 +76,9 @@ export default function EditProduct({product, fetchData}){
 	            closeEdit();
 	            fetchData();
 	            
-	        } else {
+	        }
+
+	        else {
 	            Swal.fire({
 	                title: 'Error!',
 	                icon: 'error',
@@ -90,14 +92,9 @@ export default function EditProduct({product, fetchData}){
 	}
 
 
-
-	return(
-
+	return (
 		<>
 			<Button variant = "primary" size="sm" onClick={()=>openEdit(product)}>Edit</Button>
-
-
-			{/*Edit Modal*/}
 
 			<Modal show={showEdit} onHide={closeEdit}>
 				<Form onSubmit={e => editProduct(e, productId)}>
@@ -137,6 +134,5 @@ export default function EditProduct({product, fetchData}){
 				</Form>
 			</Modal>
 		</>
-		)
-
+	)
 }

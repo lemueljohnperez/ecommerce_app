@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 import { CardGroup } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
 import PreviewProduct from './PreviewProduct';
 
 export default function FeaturedProducts() {
 
 	const [preview, setPreview] = useState([]);
 
-	useEffect(()=>{
+	useEffect(() => {
 
 		fetch(`${process.env.REACT_APP_API_URL}/products/`)
-		.then(res=>res.json())
-		.then(data=>{
+		.then(res => res.json())
+		.then(data => {
 			console.log(data)
 
 			console.log(data.products)
@@ -37,7 +36,7 @@ export default function FeaturedProducts() {
 
 			//a loop is used to iterate five times (from 0 to 4)
 				//Inside the loop, the generateRandomNums Function is called to generate a random number and push it into the numbers array
-			for(let i = 0; i<5; i++){
+			for(let i = 0; i<5; i++) {
 				generateRandomNums()
 
 				featured.push(	

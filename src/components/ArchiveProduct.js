@@ -23,7 +23,9 @@ export default function ArchiveProduct({product, isActive, fetchData}) {
                 })
                 fetchData();
 
-            }else {
+            }
+
+            else {
                 Swal.fire({
                     title: 'Something Went Wrong',
                     icon: 'Error',
@@ -31,13 +33,11 @@ export default function ArchiveProduct({product, isActive, fetchData}) {
                 })
                 fetchData();
             }
-
-
         })
     }
 
 
-        const activateToggle = (productId) => {
+    const activateToggle = (productId) => {
         fetch(`${process.env.REACT_APP_API_URL}/products/${productId}/activate`, {
             method: 'PATCH',
             headers: {
@@ -56,7 +56,9 @@ export default function ArchiveProduct({product, isActive, fetchData}) {
                     text: 'Product successfully enabled'
                 })
                 fetchData();
-            }else {
+            }
+
+            else {
                 Swal.fire({
                     title: 'Something Went Wrong',
                     icon: 'Error',
@@ -64,13 +66,11 @@ export default function ArchiveProduct({product, isActive, fetchData}) {
                 })
                 fetchData();
             }
-
-
         })
     }
  
 
-    return(
+    return (
         <>
             {isActive ?
 
@@ -82,6 +82,5 @@ export default function ArchiveProduct({product, isActive, fetchData}) {
 
             }
         </>
-
-        )
+    )
 }
