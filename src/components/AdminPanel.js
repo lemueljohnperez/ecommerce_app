@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import EditProduct from './EditProduct';
 import ArchiveProduct from './ArchiveProduct';
 
@@ -35,7 +36,11 @@ export default function AdminPanel({ productsData, fetchData }) {
 
     return (
         <>
-            <h1 className="text-center my-5 pt-5">Admin Dashboard</h1>
+            <h1 className="text-center mt-5 pt-5">Admin Dashboard</h1>
+            <div className="text-center mb-3">
+                <Button as={Link} to="/addProduct" variant="primary">Add New Product</Button>
+                <Button as={Link} to="/order" variant="success">Show User Orders</Button>
+            </div>
             
             <Table striped bordered hover responsive>
                 <thead>

@@ -20,7 +20,7 @@ export default function PreviewProduct(props) {
 					<Card.Text>{description}</Card.Text>
 				</Card.Body>
 				<Card.Footer>
-					<h5 className="text-center">₱ {price}</h5>
+					<h5 className="text-center">₱ {price.toFixed(2)}</h5>
 					<Link className="detailsButton d-block text-center" to={`/products/${_id}`}>Details</Link>
 				</Card.Footer>
 			</Card>

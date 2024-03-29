@@ -92,7 +92,7 @@ export default function ProductView() {
                             <Card.Subtitle>Description:</Card.Subtitle>
                             <Card.Text>{description}</Card.Text>
                             <Card.Subtitle>Price:</Card.Subtitle>
-                            <Card.Text>PhP {price}</Card.Text>
+                            <Card.Text>PhP {price.toFixed(2)}</Card.Text>
                             <Form.Group controlId="quantity">
                                 <Form.Label>Quantity:</Form.Label>
                                 <Form.Control type="number" min="1" value={quantity} onChange={handleQuantityChange} />

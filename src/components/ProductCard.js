@@ -13,7 +13,7 @@ export default function ProductCard({ productProp }) {
                 <Card.Subtitle>Description:</Card.Subtitle>
                 <Card.Text>{description}</Card.Text>
                 <Card.Subtitle>Price:</Card.Subtitle>
-                <Card.Text>PhP {price}</Card.Text>
+                <Card.Text>PhP {price.toFixed(2)}</Card.Text>
 
                 <Link className="btn btn-primary" to={`/products/${_id}`}>Details</Link>
             </Card.Body>
