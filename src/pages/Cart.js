@@ -151,7 +151,35 @@ export default function Cart() {
 
     const checkout = (e) => {
         e.preventDefault();
-        // Add checkout logic
+
+        fetch(`${process.env.REACT_APP_API_URL}/orders/checkout`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+        })
+        .then(() => {
+            Swal.fire({
+                title: 'Checkout Successful!',
+                icon: 'success',
+                text: 'Your order has been created successfully'
+            });
+            setCart({ cartItems: [], totalPrice: 0 });
+        })
+        .catch(error => {
+            console.error('Error during checkout:', error);
+            Swal.fire({
+                title: 'Error',
+                icon: 'error',
+                text: 'An error occurred during checkout. Please try again later.'
+            });
+        });
     };
 
     return (
@@ -167,7 +195,7 @@ export default function Cart() {
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Subtotal</th>
-                                <th>Actions</th>
+                                <th colSpan="2">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -181,7 +209,7 @@ export default function Cart() {
                                         <span style={{ margin: '0 5px' }}>{item.quantity}</span>
                                         <Button size="sm" variant="outline-dark" onClick={() => increaseQuantity(item.productId)}>+</Button>
                                     </td>
-                                    <td>PHP {item.subtotal}</td>
+                                    <td>PHP {item.subtotal.toFixed(2)}</td>
                                     <td>
                                         <Button variant="danger" onClick={() => removeItem(item.productId)}>Remove</Button>
                                     </td>
@@ -189,11 +217,15 @@ export default function Cart() {
                             ))}
                             <tr>
                                 <td colSpan="5">Total:</td>
-                                <td>PHP {cart.totalPrice}</td>
+                                <td>PHP {cart.totalPrice.toFixed(2)}</td>
+                            </tr>
+
+                            <tr>
+                                <td colSpan="5"></td>
+                                <td><Button onClick={checkout}>Checkout</Button></td>
                             </tr>
                         </tbody>
                     </Table>
-                    <Button onClick={checkout}>Checkout</Button>
                 </React.Fragment>
             ) : (
                 <>

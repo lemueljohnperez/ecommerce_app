@@ -16,6 +16,7 @@ import Logout from './pages/Logout';
 import Error from './pages/Error';
 import Profile from './pages/Profile';
 import Cart from './pages/Cart';
+import Order from './pages/Order';
 import './App.css';
 import { UserProvider } from './UserContext';
 
@@ -65,6 +66,7 @@ function App() {
                         <Route path="/products/:productId" element={<ProductView/>}/>
                         <Route path="/addProduct" element={<AddProduct/>}/>
                         <Route path="/cart" element={<Cart/>}/>
+                        <Route path="/order" element={<Order/>} />
                         <Route path="/register" element={<Register/>} />
                         <Route path="/profile" element={<Profile/>} />
                         <Route path="/login" element={<Login/>} />
