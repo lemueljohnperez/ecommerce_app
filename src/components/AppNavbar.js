@@ -10,7 +10,7 @@ export default function AppNavbar() {
     const { user } = useContext(UserContext);
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className="fixed-top">
             <Container fluid>
                 <Navbar.Brand as={Link} to="/">ECommerce</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -27,6 +27,7 @@ export default function AppNavbar() {
                                 </>
                                 :
                                 <>
+                                    <Nav.Link as={Link} to="/cart">Cart</Nav.Link>
                                     <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                                     <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
                                 </>

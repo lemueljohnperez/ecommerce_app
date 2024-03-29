@@ -35,7 +35,7 @@ export default function AdminPanel({ productsData, fetchData }) {
 
     return (
         <>
-            <h1 className="text-center my-5 pt-5"> Admin Dashboard</h1>
+            <h1 className="text-center my-5 pt-5">Admin Dashboard</h1>
             
             <Table striped bordered hover responsive>
                 <thead>

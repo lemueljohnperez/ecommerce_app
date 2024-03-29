@@ -31,7 +31,7 @@ export default function SearchByPriceRange() {
     };
 
     return (
-        <div className="container">
+        <div className="container my-5 pt-5">
             <h2>Search Products by Price Range</h2>
             <form onSubmit={handleSearch}>
                 <div className="mb-3">
@@ -57,7 +57,7 @@ export default function SearchByPriceRange() {
                 <button type="submit" className="btn btn-primary">Search</button>
             </form>
             <div>
-                <h4>Search Results:</h4>
+                <h4 className="mt-3">Search Results:</h4>
                 {searchResults.map((product) => (
                     <div key={product.name} className="ml-5">
                         <ul>

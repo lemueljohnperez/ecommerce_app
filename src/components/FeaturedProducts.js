@@ -16,7 +16,7 @@ export default function FeaturedProducts() {
 			console.log(data.products)
 
 
-			//Added two empty arrays to be used to store random numbers and featured courses data
+			//Added two empty arrays to be used to store random numbers and featured products data
 			const numbers = [];
 			const featured = [];
 

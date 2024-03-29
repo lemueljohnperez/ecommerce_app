@@ -3,7 +3,6 @@ import {Row, Col} from 'react-bootstrap';
 import UserContext from '../UserContext';
 import { useNavigate,Navigate } from 'react-router-dom';
 import ResetPassword from '../components/ResetPassword';
-import UpdateProfile from '../components/UpdateProfile';
 
 
 export default function Profile() {
@@ -53,7 +52,6 @@ export default function Profile() {
             <Row className='pt-4 mt-4'>
                 <Col>
                     <ResetPassword/>
-                    <UpdateProfile/>
                 </Col>
             </Row>
         </>

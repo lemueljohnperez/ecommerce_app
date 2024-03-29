@@ -8,7 +8,7 @@ export default function Banner({data}) {
 
 	return (
 		<Row>
-			<Col className = "p-5 text-center">
+			<Col className = "my-5 p-5 text-center">
 				<h1>{title}</h1>
 				<p>{content}</p>
 				<Link className="btn btn-primary" to={destination}>{label}</Link>

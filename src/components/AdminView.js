@@ -12,7 +12,7 @@ export default function AdminProducts() {
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/products/all`, {
             headers:{
-                Authorization: `Bearer ${ localStorage.getItem('token')}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
         .then(res => res.json())
@@ -29,7 +29,7 @@ export default function AdminProducts() {
 
         fetch(`${process.env.REACT_APP_API_URL}/products/all`, {
             headers:{
-                Authorization: `Bearer ${ localStorage.getItem('token')}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
         .then(res => res.json())

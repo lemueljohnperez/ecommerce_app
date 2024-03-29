@@ -25,7 +25,7 @@ export default function EditProduct({product, fetchData}) {
 			console.log(data.product._id);
 			console.log(data.product.name)
 
-			//populate all the input values with the course info that we fetched
+			//populate all the input values with the product info that we fetched
 
 			setProductId(data.product._id);
 			setName(data.product.name);
@@ -46,7 +46,7 @@ export default function EditProduct({product, fetchData}) {
 
 	}
 
-	//function to update the course
+	//function to update the product
 	const editProduct = (e, productId) => {
 
 		e.preventDefault();
