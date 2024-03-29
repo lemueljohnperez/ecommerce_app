@@ -9,3 +9,90 @@
 {
     height: 100%;
 }
+
+.banner
+{
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.homeButton
+{
+    background: #FF9800;
+    border: 1px solid #FF9800;
+    color: black;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.homeButton:hover
+{
+    background: #FFC374;
+    border: 1px solid #FFC374;
+    color: black;
+    text-decoration: none;
+}
+
+.detailsButton
+{
+    background: #90D26D;
+    border: 1px solid #90D26D;
+    color: black;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.detailsButton:hover
+{
+    background: #D9EDBF;
+    border: 1px solid #D9EDBF;
+    color: black;
+    text-decoration: none;
+}
+
+.title
+{
+    min-height: 100vh;
+}
+
+.banner-image
+{
+    width: 100%;
+    object-fit: cover; 
+    margin-bottom: 20px;
+}
+
+.arrow-up
+{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 15%;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.arrow-up:hover
+{
+    background-color: transparent;
+}
+
+.arrow-up i
+{
+    padding: 8px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 768px) {
+    .title
+    {
+        min-height: 100%;
+    }
+}

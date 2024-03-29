@@ -29,6 +29,13 @@ export default function Products() {
         })
     }
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+
     useEffect(() => {
 
         fetchData();
@@ -45,6 +52,9 @@ export default function Products() {
                     <>
                         <h1 className="my-5 pt-5 text-center">Products</h1>
                         <UserView productsData={products} />
+                        <div className="arrow-up" onClick={scrollToTop}>
+                            <i class="ri-arrow-up-s-line ri-3x"></i>
+                        </div>
                     </>
             }
         </>

@@ -10,9 +10,9 @@ export default function AppNavbar() {
     const { user } = useContext(UserContext);
 
     return (
-        <Navbar bg="light" expand="lg" className="fixed-top">
+        <Navbar bg="light" expand="lg" fixed="top">
             <Container fluid>
-                <Navbar.Brand as={Link} to="/">ECommerce</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">UrbanEdge</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">

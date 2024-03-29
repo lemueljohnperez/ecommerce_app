@@ -36,11 +36,10 @@ export default function FeaturedProducts() {
 
 			//a loop is used to iterate five times (from 0 to 4)
 				//Inside the loop, the generateRandomNums Function is called to generate a random number and push it into the numbers array
-			for(let i = 0; i<5; i++) {
+			for(let i = 0; i < 5; i++) {
 				generateRandomNums()
 
-				featured.push(	
-					// This jsx will be pushed into the featured array
+				featured.push(
 					<PreviewProduct key={data.products[numbers[i]]._id} data={data.products[numbers[i]]} breakPoint={2}/>
 				)
 
@@ -53,8 +52,8 @@ export default function FeaturedProducts() {
 
 	return (
 		<>
-			<h2 className="text-center">Featured Products</h2>
-			<CardGroup className="justify-content-center">
+			<h2 className="text-center">BEST SELLERS</h2>
+			<CardGroup className="justify-content-center my-5">
 
 				{preview}
 

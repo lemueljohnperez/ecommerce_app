@@ -115,9 +115,9 @@ export default function Login(props) {
         <Navigate to ="/products"/>
         :
         <Form onSubmit={(e)=>authenticate(e)}>
-            <h1 className="my-5 text-center">Login</h1>
+            <h1 className="my-5 pt-5 text-center">Login</h1>
             <Form.Group controlId="userEmail">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>Email address:</Form.Label>
                 <Form.Control 
                     type="email" 
                     placeholder="Enter email"
@@ -128,7 +128,7 @@ export default function Login(props) {
             </Form.Group>
 
             <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Password:</Form.Label>
                 <Form.Control 
                     type="password" 
                     placeholder="Password"

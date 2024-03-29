@@ -21,7 +21,7 @@ export default function PreviewProduct(props) {
 				</Card.Body>
 				<Card.Footer>
 					<h5 className="text-center">₱ {price}</h5>
-					<Link className="btn btn-primary d-block" to={`/products/${_id}`}>Details</Link>
+					<Link className="detailsButton d-block text-center" to={`/products/${_id}`}>Details</Link>
 				</Card.Footer>
 			</Card>
 
