@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import UserView from '../components/UserView';
 import AdminPanel from '../components/AdminPanel';
 import UserContext from '../UserContext';
+import ScrollBehavior from '../components/ScrollBehavior';
 
 export default function AdminProducts() {
 
@@ -48,7 +49,8 @@ export default function AdminProducts() {
 
     return (
         <>    
-            <AdminPanel productsData={products} fetchData={fetchData} />    
+            <AdminPanel productsData={products} fetchData={fetchData} />
+            <ScrollBehavior/>
         </>
     )
 }
