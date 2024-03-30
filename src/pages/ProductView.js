@@ -97,27 +97,24 @@ export default function ProductView() {
                             <Card.Text>{description}</Card.Text>
                             <Card.Subtitle>Price:</Card.Subtitle>
                             <Card.Text>₱ {price.toFixed(2)}</Card.Text>
-                            {user.isAdmin === true ? (
-                                <>
-                                    <Button variant="danger" onClick={addToCart} disabled>Add to Cart</Button>
-                                </>
+                            {user.isAdmin ? (
+                                <Button variant="danger" disabled>Add to Cart</Button>
                             ) : (
-                                <>
-                                    <Form.Group controlId="quantity">
-                                        <Form.Label>Quantity:</Form.Label>
-                                        <Form.Control type="number" min="1" value={quantity} onChange={handleQuantityChange} />
-                                    </Form.Group>
-                                </>
+                                <Form.Group controlId="quantity">
+                                    <Form.Label>Quantity:</Form.Label>
+                                    <Form.Control type="number" min="1" value={quantity} onChange={handleQuantityChange} />
+                                </Form.Group>
                             )}
-                            {user.id === null ? (
+                            {!user.isAdmin && user.id ? (
+                                <>
+                                    <div className="d-flex flex-column justify-content-between ml-2">
+                                        <Button variant="success" onClick={handleCheckout} className="d-block mb-2">Checkout</Button>
+                                        <Button variant="primary" onClick={addToCart} className="d-block">Add to Cart</Button>
+                                    </div>
+                                </>
+                            ) : user.id === null ? (
                                 <Link className="btn btn-danger btn-block mt-3" to="/login">Login to Add to Cart</Link>
-                            ) : (
-                                <div className="d-flex flex-column justify-content-between ml-2">
-                                    <Button variant="success" onClick={handleCheckout} className="d-block mb-2">Checkout</Button>
-                                    <Button variant="primary" onClick={addToCart} className="d-block">Add to Cart</Button>
-                                </div>
-                            )
-                            }
+                            ) : null}
                         </Card.Body>
                     </Card>
                 </Col>
