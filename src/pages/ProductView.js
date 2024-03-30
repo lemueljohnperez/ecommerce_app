@@ -68,6 +68,10 @@ export default function ProductView() {
             });
     }
 
+    const handleCheckout = () => {
+        navigate("/cart");
+    };
+
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/products/${productId}`)
             .then(res => res.json())
@@ -103,12 +107,17 @@ export default function ProductView() {
                                         <Form.Label>Quantity:</Form.Label>
                                         <Form.Control type="number" min="1" value={quantity} onChange={handleQuantityChange} />
                                     </Form.Group>
-                                    <Button variant="primary" onClick={addToCart}>Add to Cart</Button>
                                 </>
                             )}
-                            {user.id === null && (
+                            {user.id === null ? (
                                 <Link className="btn btn-danger btn-block mt-3" to="/login">Login to Add to Cart</Link>
-                            )}
+                            ) : (
+                                <div className="d-flex flex-column justify-content-between ml-2">
+                                    <Button variant="success" onClick={handleCheckout} className="d-block mb-2">Checkout</Button>
+                                    <Button variant="primary" onClick={addToCart} className="d-block">Add to Cart</Button>
+                                </div>
+                            )
+                            }
                         </Card.Body>
                     </Card>
                 </Col>

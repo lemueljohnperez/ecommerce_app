@@ -203,13 +203,13 @@ export default function Cart() {
                                 <tr key={item.productId}>
                                     <td>{item.productId}</td>
                                     <td>{item.name}</td>
-                                    <td>PHP {item.price}</td>
+                                    <td>₱ {item.price}</td>
                                     <td>
                                         <Button size="sm" variant="outline-dark" onClick={() => decreaseQuantity(item.productId)}>-</Button>
                                         <span style={{ margin: '0 5px' }}>{item.quantity}</span>
                                         <Button size="sm" variant="outline-dark" onClick={() => increaseQuantity(item.productId)}>+</Button>
                                     </td>
-                                    <td>PHP {item.subtotal.toFixed(2)}</td>
+                                    <td>₱ {item.subtotal.toFixed(2)}</td>
                                     <td>
                                         <Button variant="danger" onClick={() => removeItem(item.productId)}>Remove</Button>
                                     </td>
