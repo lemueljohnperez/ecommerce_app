@@ -38,9 +38,9 @@ export default function Profile() {
         :
         <>
             <Row>
-                <Col className="p-5 bg-primary text-white">
+                <Col className="p-5 bg-white text-black">
                     <h1 className="my-5 ">Profile</h1>
-                    <h2 className="mt-3">{`${details.firstName} ${details.lastName}`}</h2>
+                    <h2 className="mt-3">{`Name: ${details.firstName} ${details.lastName}`}</h2>
                     <hr />
                     <h4>Contacts</h4>
                     <ul>

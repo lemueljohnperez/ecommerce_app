@@ -9,10 +9,10 @@ export default function Banner({data}) {
 
 	return (
 		<Row>
-			<Col className = "my-5 p-5 text-center title">
+			<Col className = "my-5 p-5 text-center bannerTitle">
 				<h1>{title}</h1>
-				<p className="banner">{content}</p>
-				<Link className="homeButton" to={destination}>{label}</Link>
+				<p className="bannerContent">{content}</p>
+				<Link className="bannerButton" to={destination}>{label}</Link>
 				<img src={bannerImage} alt="" className="banner-image mt-5" />
 			</Col>
 		</Row>

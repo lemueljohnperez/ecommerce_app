@@ -41,7 +41,7 @@ export default function OrderPage() {
         <div>
             <h1 className='my-5 pt-5'>My Orders</h1>
             <Table striped bordered hover>
-                <thead>
+                <thead className="bg-dark text-white">
                     <tr>
                         <th>Order ID</th>
                         <th>Date Ordered</th>

@@ -13,9 +13,9 @@ export default function ProductCard({ productProp }) {
                 <Card.Subtitle>Description:</Card.Subtitle>
                 <Card.Text>{description}</Card.Text>
                 <Card.Subtitle>Price:</Card.Subtitle>
-                <Card.Text>PhP {price.toFixed(2)}</Card.Text>
+                <Card.Text>₱ {price.toFixed(2)}</Card.Text>
 
-                <Link className="btn btn-primary" to={`/products/${_id}`}>Details</Link>
+                <Link className="detailsButton" to={`/products/${_id}`}>Details</Link>
             </Card.Body>
         </Card>
     );

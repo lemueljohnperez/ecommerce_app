@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from 'react';
 import UserView from '../components/UserView';
 import AdminView from '../components/AdminView';
 import UserContext from '../UserContext';
+import ScrollBehavior from '../components/ScrollBehavior';
 
 export default function Products() {
 
@@ -16,7 +17,6 @@ export default function Products() {
             console.log(data)
             const productData = data.products
             setProducts(productData)
-    
         })
     }, []);
     
@@ -28,13 +28,6 @@ export default function Products() {
             setProducts(data.products);
         })
     }
-
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    };
 
     useEffect(() => {
 
@@ -50,11 +43,9 @@ export default function Products() {
                     <AdminView/>
                     :
                     <>
-                        <h1 className="my-5 pt-5 text-center">Products</h1>
+                        <h1 className="text-center my-5 pt-5">Products</h1>
                         <UserView productsData={products} />
-                        <div className="arrow-up" onClick={scrollToTop}>
-                            <i class="ri-arrow-up-s-line ri-3x"></i>
-                        </div>
+                        <ScrollBehavior/>
                     </>
             }
         </>

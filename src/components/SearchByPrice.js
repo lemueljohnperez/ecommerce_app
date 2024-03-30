@@ -31,10 +31,10 @@ export default function SearchByPriceRange() {
     };
 
     return (
-        <div className="container my-5 pt-5">
+        <div className="container">
             <h2>Search Products by Price Range</h2>
             <form onSubmit={handleSearch}>
-                <div className="mb-3">
+                <div className="mb-3 minPrice">
                     <label htmlFor="minPrice" className="form-label">Min Price</label>
                     <input
                         type="number"
@@ -44,7 +44,7 @@ export default function SearchByPriceRange() {
                         onChange={(e) => setMinPrice(e.target.value)}
                     />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 maxPrice">
                     <label htmlFor="maxPrice" className="form-label">Max Price</label>
                     <input
                         type="number"

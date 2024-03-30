@@ -188,7 +188,7 @@ export default function Cart() {
             {cart && cart.cartItems && cart.cartItems.length > 0 ? (
                 <React.Fragment>
                     <Table striped bordered hover responsive>
-                        <thead>
+                        <thead className="bg-dark text-white">
                             <tr>
                                 <th>Product ID</th>
                                 <th>Product</th>

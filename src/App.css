@@ -10,13 +10,18 @@
     height: 100%;
 }
 
-.banner
+.featuredTitle
+{
+    font-size: 2.5rem;
+}
+
+.bannerContent
 {
     font-weight: 300;
     font-size: 2rem;
 }
 
-.homeButton
+.bannerButton
 {
     background: #FF9800;
     border: 1px solid #FF9800;
@@ -27,7 +32,7 @@
     font-size: 1.5rem;
 }
 
-.homeButton:hover
+.bannerButton:hover
 {
     background: #FFC374;
     border: 1px solid #FFC374;
@@ -53,7 +58,7 @@
     text-decoration: none;
 }
 
-.title
+.bannerTitle
 {
     min-height: 100vh;
 }
@@ -75,7 +80,7 @@
     border-radius: 15%;
     color: black;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color, 0.3s, transform 0.3s;
 }
 
 .arrow-up:hover
@@ -91,7 +96,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .title
+    .bannerTitle
     {
         min-height: 100%;
     }

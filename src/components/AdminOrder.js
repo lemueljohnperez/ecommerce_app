@@ -33,7 +33,7 @@ export default function OrderPage() {
             <h1>All Orders</h1>
             <Table striped bordered hover>
                 <thead>
-                    <tr>
+                    <tr className="bg-dark text-white">
                         <th>Order ID</th>
                         <th>User ID</th>
                         <th>Total Price</th>
@@ -46,7 +46,7 @@ export default function OrderPage() {
                         <tr key={order._id}>
                             <td>{order._id}</td>
                             <td>{order.userId}</td>
-                            <td>${order.totalPrice.toFixed(2)}</td>
+                            <td>₱ {order.totalPrice.toFixed(2)}</td>
                             <td>{new Date(order.orderedOn).toLocaleString()}</td>
                             <td>{order.status}</td>
                         </tr>

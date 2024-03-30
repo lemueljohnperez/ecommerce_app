@@ -52,7 +52,7 @@ export default function FeaturedProducts() {
 
 	return (
 		<>
-			<h2 className="text-center">BEST SELLERS</h2>
+			<h2 className="text-center featuredTitle">BEST SELLERS</h2>
 			<CardGroup className="justify-content-center my-5">
 
 				{preview}

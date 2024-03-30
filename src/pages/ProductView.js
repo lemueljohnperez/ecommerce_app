@@ -92,16 +92,23 @@ export default function ProductView() {
                             <Card.Subtitle>Description:</Card.Subtitle>
                             <Card.Text>{description}</Card.Text>
                             <Card.Subtitle>Price:</Card.Subtitle>
-                            <Card.Text>PhP {price.toFixed(2)}</Card.Text>
-                            <Form.Group controlId="quantity">
-                                <Form.Label>Quantity:</Form.Label>
-                                <Form.Control type="number" min="1" value={quantity} onChange={handleQuantityChange} />
-                            </Form.Group>
-                            {user.id !== null ?
-                                <Button variant="primary" onClick={addToCart}>Add to Cart</Button>
-                                :
-                                <Link className="btn btn-danger btn-block" to="/login">Log in to add to cart</Link>
-                            }
+                            <Card.Text>₱ {price.toFixed(2)}</Card.Text>
+                            {user.isAdmin === true ? (
+                                <>
+                                    <Button variant="danger" onClick={addToCart} disabled>Add to Cart</Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Form.Group controlId="quantity">
+                                        <Form.Label>Quantity:</Form.Label>
+                                        <Form.Control type="number" min="1" value={quantity} onChange={handleQuantityChange} />
+                                    </Form.Group>
+                                    <Button variant="primary" onClick={addToCart}>Add to Cart</Button>
+                                </>
+                            )}
+                            {user.id === null && (
+                                <Link className="btn btn-danger btn-block mt-3" to="/login">Login to Add to Cart</Link>
+                            )}
                         </Card.Body>
                     </Card>
                 </Col>
