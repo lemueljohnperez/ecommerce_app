@@ -1,6 +1,6 @@
 import { Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import product from '../images/product.png';
 
 export default function PreviewProduct(props) {
 
@@ -14,10 +14,11 @@ export default function PreviewProduct(props) {
 
 			<Card className="cardHighlight featuredProduct">
 				<Card.Body>
+					<Card.Img className="mb-3" variant="top" src={product}/>
 					<Card.Title className="text-center">
-						<Link to={`/products/${_id}`}>{name}</Link>
+						<Card.Text>{name}</Card.Text>
 					</Card.Title>
-					<Card.Text>{description}</Card.Text>
+					<Card.Text className="text-justify">{description}</Card.Text>
 				</Card.Body>
 				<Card.Footer>
 					<h5 className="text-center">₱ {price.toFixed(2)}</h5>

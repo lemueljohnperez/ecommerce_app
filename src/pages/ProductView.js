@@ -3,6 +3,7 @@ import { Container, Card, Button, Row, Col, Form } from 'react-bootstrap';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
+import product from '../images/product.png';
 
 export default function ProductView() {
     const { user } = useContext(UserContext);
@@ -74,9 +75,10 @@ export default function ProductView() {
                 <Col lg={{ span: 6, offset: 3 }}>
                     <Card>
                         <Card.Body>
+                            <Card.Img className="productDetailsImage" variant="top" src={product}/>
                             <Card.Title>{name}</Card.Title>
                             <Card.Subtitle>Description:</Card.Subtitle>
-                            <Card.Text>{description}</Card.Text>
+                            <Card.Text className="text-justify">{description}</Card.Text>
                             <Card.Subtitle>Price:</Card.Subtitle>
                             <Card.Text>₱ {price.toFixed(2)}</Card.Text>
                             {user.isAdmin ? (
