@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Table, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 export default function Cart() {
+    const navigate = useNavigate();
     const [cart, setCart] = useState({ cartItems: [], totalPrice: 0 });
 
     const fetchProductsDetails = (cartItems) => {
@@ -98,11 +99,11 @@ export default function Cart() {
 
                 // Recalculate total price
                 const updatedTotalPrice = calculateTotal(data.updatedCart.cartItems);
-                    setCart(prevCart => ({
-                        ...prevCart,
-                        cartItems: data.updatedCart.cartItems,
-                        totalPrice: updatedTotalPrice
-                    }));
+                setCart(prevCart => ({
+                    ...prevCart,
+                    cartItems: data.updatedCart.cartItems,
+                    totalPrice: updatedTotalPrice
+                }));
             })
             .catch(error => {
                 console.error('Error updating item quantity:', error);
@@ -140,6 +141,7 @@ export default function Cart() {
             if (response.ok) {
                 return response.json();
             }
+            navigate("/order");
         })
         .then(() => {
             Swal.fire({
@@ -148,6 +150,7 @@ export default function Cart() {
                 text: 'Your order has been created successfully'
             });
             setCart({ cartItems: [], totalPrice: 0 });
+            navigate("/order");
         })
         .catch(error => {
             console.error('Error during checkout:', error);
