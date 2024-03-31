@@ -67,7 +67,7 @@ export default function Cart() {
                     icon: 'success',
                     text: 'Successfully removed item from the cart.'
                 })
-                setCart(data.updatedCart);
+                fetchProductsDetails(data.updatedCart.cartItems);
             })
             .catch(error => {
                 console.error('Error removing item from cart:', error);
@@ -79,51 +79,7 @@ export default function Cart() {
             });
     };
 
-    const increaseQuantity = (productId) => {
-        const updatedCartItems = cart.cartItems.map(item => {
-            if (item.productId === productId) {
-                const updatedQuantity = item.quantity + 1;
-                const updatedSubtotal = updatedQuantity * item.price;
-                return {
-                    ...item,
-                    quantity: updatedQuantity,
-                    subtotal: updatedSubtotal
-                };
-            }
-            return item;
-        });
-        setCart(prevCart => ({
-            ...prevCart,
-            cartItems: updatedCartItems,
-            totalPrice: calculateTotal(updatedCartItems)
-        }));
-    };
-
-    const decreaseQuantity = (productId) => {
-        const updatedCartItems = cart.cartItems.map(item => {
-            if (item.productId === productId && item.quantity > 1) {
-                const updatedQuantity = item.quantity - 1;
-                const updatedSubtotal = updatedQuantity * item.price;
-                return {
-                    ...item,
-                    quantity: updatedQuantity,
-                    subtotal: updatedSubtotal
-                };
-            }
-            return item;
-        });
-        setCart(prevCart => ({
-            ...prevCart,
-            cartItems: updatedCartItems,
-            totalPrice: calculateTotal(updatedCartItems)
-        }));
-    };
-
-    const calculateTotal = (cartItems) => {
-        return cartItems.reduce((total, item) => total + item.subtotal, 0);
-    };
-
-    const updateCartQuantity = (productId, quantity) => {
+    const updateQuantity = (productId, quantity) => {
         fetch(`${process.env.REACT_APP_API_URL}/cart/update-cart-quantity`, {
             method: 'PATCH',
             headers: {
@@ -137,16 +93,37 @@ export default function Cart() {
         })
             .then(res => res.json())
             .then(data => {
-                setCart(data.updatedCart);
+                // Fetch updated product details including name and price
+                fetchProductsDetails(data.updatedCart.cartItems);
+
+                // Recalculate total price
+                const updatedTotalPrice = calculateTotal(data.updatedCart.cartItems);
+                    setCart(prevCart => ({
+                        ...prevCart,
+                        cartItems: data.updatedCart.cartItems,
+                        totalPrice: updatedTotalPrice
+                    }));
             })
             .catch(error => {
-                console.error('Error updating cart quantity:', error);
+                console.error('Error updating item quantity:', error);
                 Swal.fire({
                     title: 'Error',
                     icon: 'error',
-                    text: 'An error occurred while updating cart quantity. Please try again later.'
+                    text: 'An error occurred while updating item quantity. Please try again later.'
                 });
             });
+    };
+
+    const increaseQuantity = (productId) => {
+        updateQuantity(productId, 1);
+    };
+
+    const decreaseQuantity = (productId) => {
+        updateQuantity(productId, -1);
+    };
+
+    const calculateTotal = (cartItems) => {
+        return cartItems.reduce((total, item) => total + item.subtotal, 0);
     };
 
     const checkout = (e) => {
@@ -191,7 +168,7 @@ export default function Cart() {
                         <thead className="bg-dark text-white">
                             <tr>
                                 <th>Product ID</th>
-                                <th>Product</th>
+                                <th>Product Name</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Subtotal</th>
@@ -217,7 +194,7 @@ export default function Cart() {
                             ))}
                             <tr>
                                 <td colSpan="5">Total:</td>
-                                <td>PHP {cart.totalPrice.toFixed(2)}</td>
+                                <td>₱ {cart.totalPrice.toFixed(2)}</td>
                             </tr>
 
                             <tr>

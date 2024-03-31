@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 
 export default function ProductView() {
-
     const { user } = useContext(UserContext);
     const { productId } = useParams();
     const navigate = useNavigate();
@@ -21,52 +20,35 @@ export default function ProductView() {
 
     const addToCart = () => {
         fetch(`${process.env.REACT_APP_API_URL}/cart/add-to-cart`, {
-            method: "POST",
+            method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             },
             body: JSON.stringify({
                 productId: productId,
-                quantity: quantity // Use the selected quantity
+                quantity: quantity
             })
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.message) {
-                    Swal.fire({
-                        title: "Success",
-                        icon: 'success',
-                        text: data.message
-                    });
-                    navigate("/products");
-                }
-
-                else if (data.updatedCart) {
-                    Swal.fire({
-                        title: "Success",
-                        icon: 'success',
-                        text: `successfully added product to cart`
-                    });
-                    navigate("/products");
-                    console.log("Updated Cart:", data.updatedCart);
-                    // You can use the updatedCart data as needed in your application
-                }
-
-                else {
-                    // Handle other scenarios if needed
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Swal.fire({
-                    title: "Error",
-                    icon: "error",
-                    text: "Failed to add the product to the cart."
-                });
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            Swal.fire({
+                title: 'Success',
+                icon: 'success',
+                text: 'Item added to cart successfully.'
             });
-    }
+            navigate("/products");
+        })
+        .catch(error => {
+            console.error('Error adding item to cart:', error);
+            Swal.fire({
+                title: 'Error',
+                icon: 'error',
+                text: 'An error occurred while adding item to cart. Please try again later.'
+            });
+        });
+    };
 
     const handleCheckout = () => {
         navigate("/cart");
