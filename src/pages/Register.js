@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 
@@ -131,15 +131,15 @@ export default function Register() {
     console.log("access",user.access)
     console.log("email", user.email)
 
-	return (
+    return (
         (user.id !== null) ?
             <Navigate to="/products" />
             :
-            <div className="d-flex justify-content-center align-items-center vh-100 mt-5">
-                <Container>
+            <div className="d-flex justify-content-center align-items-center min-vh-100 mt-5">
+                <Container >
                     <Row className="justify-content-center">
                         <Col md={6}>
-                            <div className="rounded p-4 border">
+                            <div className="rounded p-4 border my-5">
                                 <h1 className="text-center mb-4">Register</h1>
                                 <Form onSubmit={(e) => registerUser(e)}>
                                     <Form.Group>
@@ -216,12 +216,12 @@ export default function Register() {
                                             <Button variant="danger" type="submit" id="submitBtn" disabled className="w-100">Please enter your registration details</Button>
                                         }
                                     </Form.Group>
-
+                                    <p className="text-center">Already have an account? <Link to="/login" style={{ color: 'blue' }}>Click here</Link> to log in.</p>
                                 </Form>
                             </div>
                         </Col>
                     </Row>
                 </Container>
             </div>
-	)
+    )
 }
