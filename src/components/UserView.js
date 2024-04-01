@@ -31,7 +31,7 @@ export default function UserView({productsData}) {
             <SearchByPrice/>
             <>
             <div className='container-fluid'>
-                <div className='row d flex justify-content-around'>
+                <div className='row d-flex justify-content-around'>
                     { products }
                 </div>
             </div>

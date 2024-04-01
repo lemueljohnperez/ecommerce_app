@@ -10,11 +10,10 @@ export default function PreviewProduct(props) {
 	const imageSrc = `./images/${name}.png`;
 
 	return (
-		<Col xs={12} md={breakPoint}>
-
+		<Col xs={12} md={breakPoint} >
 			<Card className="cardHighlight featuredProduct">
-				<Card.Body>
-					<Card.Img className="mb-3" variant="top" src={imageSrc} alt=""/>
+				<Card.Body className="d-flex flex-column align-items-center">
+					<Card.Img className="productImageCard mb-3" variant="top" src={imageSrc} alt=""/>
 					<Card.Title className="text-center">
 						<Card.Text>{name}</Card.Text>
 					</Card.Title>
