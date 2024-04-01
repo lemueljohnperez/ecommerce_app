@@ -3,7 +3,7 @@ import { Table, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-export default function Cart() {
+export default function Cart(props) {
     const navigate = useNavigate();
     const [cart, setCart] = useState({ cartItems: [], totalPrice: 0 });
 
@@ -18,7 +18,8 @@ export default function Cart() {
                     return {
                         ...item,
                         name: product ? product.name : 'Product Name Not Available',
-                        price: product ? product.price : 0
+                        price: product ? product.price : 0,
+                        imageSrc: product ? `./images/${product.name}.png` : null // Add image source
                     };
                 });
                 setCart(prevCart => ({
@@ -162,59 +163,73 @@ export default function Cart() {
         });
     };
 
+    const clearCart = () => {
+        fetch(`${process.env.REACT_APP_API_URL}/cart/clear-cart`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            setCart({ cartItems: [], totalPrice: 0 });
+            Swal.fire({
+                title: 'Success',
+                icon: 'success',
+                text: 'Cart cleared successfully.'
+            });
+        })
+        .catch(error => {
+            console.error('Error clearing cart:', error);
+            Swal.fire({
+                title: 'Error',
+                icon: 'error',
+                text: 'An error occurred while clearing the cart. Please try again later.'
+            });
+        });
+    };
+
     return (
-        <div>
+        <div className="container">
             <h2 className="my-5 pt-5">Shopping Cart</h2>
             {cart && cart.cartItems && cart.cartItems.length > 0 ? (
-                <React.Fragment>
-                    <Table striped bordered hover responsive>
-                        <thead className="bg-dark text-white">
-                            <tr>
-                                <th>Product ID</th>
-                                <th>Product Name</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Subtotal</th>
-                                <th colSpan="2">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cart.cartItems.map(item => (
-                                <tr key={item.productId}>
-                                    <td>{item.productId}</td>
-                                    <td>{item.name}</td>
-                                    <td>₱ {item.price}</td>
-                                    <td>
+                <div>
+                    {cart.cartItems.map(item => (
+                        <div key={item.productId} className="item-row card mb-3">
+                            <div className="card-body d-flex">
+                                {item.imageSrc && (
+                                    <img className="productImageCard mb-3 mr-3" src={item.imageSrc} alt={item.name} style={{ width: '250px', height: '250px' }} />
+                                )}
+                                <div>
+                                    <h5 className="card-title">Product ID: {item.productId}</h5>
+                                    <p className="card-text"><strong>Product Name:</strong> {item.name}</p>
+                                    <p className="card-text"><strong>Price:</strong> ₱ {item.price}</p>
+                                    <div className="d-flex align-items-center mb-3">
                                         <Button size="sm" variant="outline-dark" onClick={() => decreaseQuantity(item.productId)}>-</Button>
-                                        <span style={{ margin: '0 5px' }}>{item.quantity}</span>
+                                        <span className="mx-2">{item.quantity}</span>
                                         <Button size="sm" variant="outline-dark" onClick={() => increaseQuantity(item.productId)}>+</Button>
-                                    </td>
-                                    <td>₱ {item.subtotal.toFixed(2)}</td>
-                                    <td>
-                                        <Button variant="danger" onClick={() => removeItem(item.productId)}>Remove</Button>
-                                    </td>
-                                </tr>
-                            ))}
-                            <tr>
-                                <td colSpan="5">Total:</td>
-                                <td>₱ {cart.totalPrice.toFixed(2)}</td>
-                            </tr>
-
-                            <tr>
-                                <td colSpan="5"></td>
-                                <td><Button onClick={checkout}>Checkout</Button></td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </React.Fragment>
-            ) : (
-                <>
-                    <div>
-                        <p className="my-5 pt-5">Cart is empty.</p>
-                        <Link className="btn btn-primary" to={"/products"}>Products</Link>
+                                    </div>
+                                    <p className="card-text"><strong>Subtotal:</strong> ₱ {item.subtotal.toFixed(2)}</p>
+                                    <Button variant="danger" onClick={() => removeItem(item.productId)}>Remove</Button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                    <div className="total-row d-flex justify-content-between border-top pt-3 mt-3">
+                        <div><strong>Total:</strong> ₱ {cart.totalPrice.toFixed(2)}</div>
                     </div>
-                </>
+                    <div className="actions my-4">
+                        <Button variant="success" onClick={checkout} className="mr-4">Checkout</Button>
+                        <Button variant="danger" onClick={clearCart}>Clear Cart</Button>
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <p className="my-5 pt-5">Cart is empty.</p>
+                    <Link className="btn btn-primary" to={"/products"}>Products</Link>
+                </div>
             )}
         </div>
     );
+
 }
