@@ -3,7 +3,6 @@ import { Container, Card, Button, Row, Col, Form } from 'react-bootstrap';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
-import product from '../images/product.png';
 
 export default function ProductView() {
     const { user } = useContext(UserContext);
@@ -14,6 +13,8 @@ export default function ProductView() {
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState(0);
     const [quantity, setQuantity] = useState(1); // Default quantity is 1
+
+    const imageSrc = `../images/${name}.png`;
 
     const handleQuantityChange = (event) => {
         setQuantity(parseInt(event.target.value)); // Convert value to integer
@@ -75,7 +76,7 @@ export default function ProductView() {
                 <Col lg={{ span: 6, offset: 3 }}>
                     <Card>
                         <Card.Body>
-                            <Card.Img className="productDetailsImage" variant="top" src={product}/>
+                            <Card.Img variant="top" src={imageSrc} alt=""/>
                             <Card.Title>{name}</Card.Title>
                             <Card.Subtitle>Description:</Card.Subtitle>
                             <Card.Text className="text-justify">{description}</Card.Text>

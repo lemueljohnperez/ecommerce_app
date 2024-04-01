@@ -1,6 +1,5 @@
 import { Col, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import product from '../images/product.png';
 
 export default function PreviewProduct(props) {
 
@@ -8,13 +7,14 @@ export default function PreviewProduct(props) {
 
 	const {_id, name, description, price} = data
 
+	const imageSrc = `./images/${name}.png`;
 
 	return (
 		<Col xs={12} md={breakPoint}>
 
 			<Card className="cardHighlight featuredProduct">
 				<Card.Body>
-					<Card.Img className="mb-3" variant="top" src={product}/>
+					<Card.Img className="mb-3" variant="top" src={imageSrc} alt=""/>
 					<Card.Title className="text-center">
 						<Card.Text>{name}</Card.Text>
 					</Card.Title>
@@ -25,7 +25,6 @@ export default function PreviewProduct(props) {
 					<Link className="detailsButton d-block text-center" to={`/products/${_id}`}>Details</Link>
 				</Card.Footer>
 			</Card>
-
 		</Col>
 	)
 }
