@@ -34,11 +34,11 @@
 
 
 ### Stretch Goals
-* [] Full responsiveness across mobile/tablet/desktop screen sizes
-* [] Product images
+* [x] Full responsiveness across mobile/tablet/desktop screen sizes
+* [x] Product images
 * [x] A hot products/feature products section
 * [x] View User Details (Profile) which a user can change their password
-* [] Setting a user as an admin functionality by Admin User
+* [x] Setting a user as an admin functionality by Admin User
 * [x] Add to Cart Feature
 * Order History
 	- [x] Regular User: Retrieve a list of all orders made by the user
