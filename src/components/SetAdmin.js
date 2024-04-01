@@ -69,9 +69,11 @@ export default function SetAdmin() {
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Cancel
                     </Button>
-                    <Button variant="primary" onClick={handleSetAsAdmin} disabled={!userId}>
-                        Confirm
-                    </Button>
+                    {!userId ?
+                        <Button variant="danger" onClick={handleSetAsAdmin} disabled={!userId}>Please enter User Id</Button>
+                        :
+                        <Button variant="primary" onClick={handleSetAsAdmin}>Confirm</Button>
+                    }
                 </Modal.Footer>
             </Modal>
         </>
