@@ -70,7 +70,7 @@ export default function SetAdmin() {
                         Cancel
                     </Button>
                     {!userId ?
-                        <Button variant="danger" onClick={handleSetAsAdmin} disabled={!userId}>Please enter User Id</Button>
+                        <Button variant="danger" onClick={handleSetAsAdmin} disabled={!userId}>Please enter User ID</Button>
                         :
                         <Button variant="primary" onClick={handleSetAsAdmin}>Confirm</Button>
                     }

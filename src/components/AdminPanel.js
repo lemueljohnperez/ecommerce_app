@@ -39,7 +39,7 @@ export default function AdminPanel({ productsData, fetchData }) {
             <div className="text-center mb-3">
                 <Button as={Link} to="/addProduct" variant="primary" className="mr-2">Add New Product</Button>
                 <Button as={Link} to="/order" variant="success" className="ml-2 mr-3">Show User Orders</Button>
-                <SetAdmin />
+                <SetAdmin/>
             </div>
 
             <Table striped bordered hover responsive>
