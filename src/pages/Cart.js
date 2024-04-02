@@ -9,7 +9,7 @@ export default function Cart(props) {
 
     const fetchProductsDetails = (cartItems) => {
         const productIds = cartItems.map(item => item.productId);
-        fetch(`${process.env.REACT_APP_API_URL}/products?ids=${productIds.join(',')}`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/products?ids=${productIds.join(',')}`)
         .then(res => res.json())
         .then(data => {
             const products = data.products;
@@ -33,7 +33,7 @@ export default function Cart(props) {
     };
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/cart/get-cart`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/get-cart`, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -56,7 +56,7 @@ export default function Cart(props) {
     }, []);
 
     const removeItem = (productId) => {
-        fetch(`${process.env.REACT_APP_API_URL}/cart/${productId}/remove-from-cart`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/${productId}/remove-from-cart`, {
             method: 'PATCH',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
@@ -93,7 +93,7 @@ export default function Cart(props) {
     };
 
     const updateQuantity = (productId, quantity) => {
-        fetch(`${process.env.REACT_APP_API_URL}/cart/update-cart-quantity`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/update-cart-quantity`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ export default function Cart(props) {
     const checkout = (e) => {
         e.preventDefault();
 
-        fetch(`${process.env.REACT_APP_API_URL}/orders/checkout`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/orders/checkout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -175,7 +175,7 @@ export default function Cart(props) {
     };
 
     const clearCart = () => {
-        fetch(`${process.env.REACT_APP_API_URL}/cart/clear-cart`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/clear-cart`, {
             method: 'PUT',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')

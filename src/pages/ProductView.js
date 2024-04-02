@@ -21,7 +21,7 @@ export default function ProductView() {
     };
 
     const addToCart = () => {
-        fetch(`${process.env.REACT_APP_API_URL}/cart/add-to-cart`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/cart/add-to-cart`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export default function ProductView() {
     };
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/products/${productId}`)
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/products/${productId}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

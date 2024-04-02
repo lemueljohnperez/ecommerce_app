@@ -9,7 +9,7 @@ export default function OrderPage() {
     }, []);
 
     const fetchOrders = () => {
-        fetch(`${process.env.REACT_APP_API_URL}/orders/all-orders`, {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/orders/all-orders`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
