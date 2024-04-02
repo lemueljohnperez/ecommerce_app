@@ -102,6 +102,22 @@
     font-weight: 600;
 }
 
+/* NavBar */
+.navbar-nav .nav-link.active {
+    position: relative;
+    color: #FFC374;
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: orange;
+}
+
 @media only screen and (max-width: 768px) {
     .bannerTitle
     {
