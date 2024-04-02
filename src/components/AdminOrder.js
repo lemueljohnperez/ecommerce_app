@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table } from 'react-bootstrap';
+import { Accordion, Card, Container, Row, Col } from 'react-bootstrap';
 
 export default function OrderPage() {
     const [orders, setOrders] = useState([]);
@@ -21,38 +21,56 @@ export default function OrderPage() {
             return response.json();
         })
         .then(data => {
-            setOrders(data.orders);
+            // Group orders by user ID
+            const groupedOrders = groupOrdersByUserId(data.orders);
+            setOrders(groupedOrders);
         })
         .catch(error => {
             console.error('Error fetching orders:', error);
         });
     };
 
+    // Function to group orders by user ID
+    const groupOrdersByUserId = (orders) => {
+        const groupedOrders = {};
+        orders.forEach(order => {
+            if (!groupedOrders[order.userId]) {
+                groupedOrders[order.userId] = [];
+            }
+            groupedOrders[order.userId].push(order);
+        });
+        return groupedOrders;
+    };
+
     return (
-        <div className="my-5 pt-5">
-            <h1>All Orders</h1>
-            <Table striped bordered hover>
-                <thead>
-                    <tr className="bg-dark text-white">
-                        <th>Order ID</th>
-                        <th>User ID</th>
-                        <th>Total Price</th>
-                        <th>Ordered On</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map(order => (
-                        <tr key={order._id}>
-                            <td>{order._id}</td>
-                            <td>{order.userId}</td>
-                            <td>₱ {order.totalPrice.toFixed(2)}</td>
-                            <td>{new Date(order.orderedOn).toLocaleString()}</td>
-                            <td>{order.status}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </Table>
-        </div>
+        <Container>
+            <Row className="justify-content-center">
+                <Col md={8}>
+                    <h1 className='my-5 pt-5 text-center'>All Orders</h1>
+                    <Accordion>
+                        {Object.keys(orders).map(userId => (
+                            <Card key={userId} className="mb-3">
+                                <Accordion.Toggle as={Card.Header} eventKey={userId} className="bg-dark text-white">
+                                    Orders for User ID: {userId} (Click for details)
+                                </Accordion.Toggle>
+                                <Accordion.Collapse eventKey={userId} className="ml-2">
+                                    <Card.Body>
+                                        {orders[userId].map(order => (
+                                            <div key={order._id} className="mb-3">
+                                                <p>Order ID: {order._id}</p>
+                                                <p>Total Price: ₱ {order.totalPrice.toFixed(2)}</p>
+                                                <p>Ordered On: {new Date(order.orderedOn).toLocaleString()}</p>
+                                                <p>Status: {order.status}</p>
+                                                <hr />
+                                            </div>
+                                        ))}
+                                    </Card.Body>
+                                </Accordion.Collapse>
+                            </Card>
+                        ))}
+                    </Accordion>
+                </Col>
+            </Row>
+        </Container>
     );
 };
