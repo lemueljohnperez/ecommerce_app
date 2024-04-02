@@ -69,7 +69,18 @@ export default function Cart(props) {
                     icon: 'success',
                     text: 'Successfully removed item from the cart.'
                 })
-                fetchProductsDetails(data.updatedCart.cartItems);
+                // Filter out the removed item from the cart items
+                const updatedCartItems = cart.cartItems.filter(item => item.productId !== productId);
+
+                // Recalculate total price
+                const updatedTotalPrice = calculateTotal(updatedCartItems);
+
+                // Update the cart with the updated cart items and total price
+                setCart({
+                    ...cart,
+                    cartItems: updatedCartItems,
+                    totalPrice: updatedTotalPrice
+                });
             })
             .catch(error => {
                 console.error('Error removing item from cart:', error);
