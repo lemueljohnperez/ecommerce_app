@@ -10,26 +10,26 @@ export default function Cart(props) {
     const fetchProductsDetails = (cartItems) => {
         const productIds = cartItems.map(item => item.productId);
         fetch(`${process.env.REACT_APP_API_URL}/products?ids=${productIds.join(',')}`)
-            .then(res => res.json())
-            .then(data => {
-                const products = data.products;
-                const updatedCartItems = cartItems.map(item => {
-                    const product = products.find(prod => prod._id === item.productId);
-                    return {
-                        ...item,
-                        name: product ? product.name : 'Product Name Not Available',
-                        price: product ? product.price : 0,
-                        imageSrc: product ? `./images/${product.name}.png` : null // Add image source
-                    };
-                });
-                setCart(prevCart => ({
-                    ...prevCart,
-                    cartItems: updatedCartItems,
-                }));
-            })
-            .catch(error => {
-                console.error('Error fetching product details:', error);
+        .then(res => res.json())
+        .then(data => {
+            const products = data.products;
+            const updatedCartItems = cartItems.map(item => {
+                const product = products.find(prod => prod._id === item.productId);
+                return {
+                    ...item,
+                    name: product ? product.name : 'Product Name Not Available',
+                    price: product ? product.price : 0,
+                    imageSrc: product ? `./images/${product.name}.png` : null // Add image source
+                };
             });
+            setCart(prevCart => ({
+                ...prevCart,
+                cartItems: updatedCartItems,
+            }));
+        })
+        .catch(error => {
+            console.error('Error fetching product details:', error);
+        });
     };
 
     useEffect(() => {
@@ -39,20 +39,20 @@ export default function Cart(props) {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log("Data received from API:", data);
-                if (data.userCart && data.userCart.length > 0) {
-                    setCart(data.userCart[0]);
-                    fetchProductsDetails(data.userCart[0].cartItems);
-                } else {
-                    console.error("Data structure from API is invalid:", data);
-                    setCart(null);
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching cart data:', error);
-            });
+        .then(res => res.json())
+        .then(data => {
+            console.log("Data received from API:", data);
+            if (data.userCart && data.userCart.length > 0) {
+                setCart(data.userCart[0]);
+                fetchProductsDetails(data.userCart[0].cartItems);
+            } else {
+                console.error("Data structure from API is invalid:", data);
+                setCart(null);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching cart data:', error);
+        });
     }, []);
 
     const removeItem = (productId) => {
@@ -62,34 +62,34 @@ export default function Cart(props) {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
         })
-            .then(res => res.json())
-            .then(data => {
-                Swal.fire({
-                    title: 'Success',
-                    icon: 'success',
-                    text: 'Successfully removed item from the cart.'
-                })
-                // Filter out the removed item from the cart items
-                const updatedCartItems = cart.cartItems.filter(item => item.productId !== productId);
-
-                // Recalculate total price
-                const updatedTotalPrice = calculateTotal(updatedCartItems);
-
-                // Update the cart with the updated cart items and total price
-                setCart({
-                    ...cart,
-                    cartItems: updatedCartItems,
-                    totalPrice: updatedTotalPrice
-                });
+        .then(res => res.json())
+        .then(data => {
+            Swal.fire({
+                title: 'Success',
+                icon: 'success',
+                text: 'Successfully removed item from the cart.'
             })
-            .catch(error => {
-                console.error('Error removing item from cart:', error);
-                Swal.fire({
-                    title: 'Error',
-                    icon: 'error',
-                    text: 'An error occurred while removing item from cart. Please try again later.'
-                });
+            // Filter out the removed item from the cart items
+            const updatedCartItems = cart.cartItems.filter(item => item.productId !== productId);
+
+            // Recalculate total price
+            const updatedTotalPrice = calculateTotal(updatedCartItems);
+
+            // Update the cart with the updated cart items and total price
+            setCart({
+                ...cart,
+                cartItems: updatedCartItems,
+                totalPrice: updatedTotalPrice
             });
+        })
+        .catch(error => {
+            console.error('Error removing item from cart:', error);
+            Swal.fire({
+                title: 'Error',
+                icon: 'error',
+                text: 'An error occurred while removing item from cart. Please try again later.'
+            });
+        });
     };
 
     const updateQuantity = (productId, quantity) => {
@@ -104,27 +104,27 @@ export default function Cart(props) {
                 quantity
             })
         })
-            .then(res => res.json())
-            .then(data => {
-                // Fetch updated product details including name and price
-                fetchProductsDetails(data.updatedCart.cartItems);
+        .then(res => res.json())
+        .then(data => {
+            // Fetch updated product details including name and price
+            fetchProductsDetails(data.updatedCart.cartItems);
 
-                // Recalculate total price
-                const updatedTotalPrice = calculateTotal(data.updatedCart.cartItems);
-                setCart(prevCart => ({
-                    ...prevCart,
-                    cartItems: data.updatedCart.cartItems,
-                    totalPrice: updatedTotalPrice
-                }));
-            })
-            .catch(error => {
-                console.error('Error updating item quantity:', error);
-                Swal.fire({
-                    title: 'Error',
-                    icon: 'error',
-                    text: 'An error occurred while updating item quantity. Please try again later.'
-                });
+            // Recalculate total price
+            const updatedTotalPrice = calculateTotal(data.updatedCart.cartItems);
+            setCart(prevCart => ({
+                ...prevCart,
+                cartItems: data.updatedCart.cartItems,
+                totalPrice: updatedTotalPrice
+            }));
+        })
+        .catch(error => {
+            console.error('Error updating item quantity:', error);
+            Swal.fire({
+                title: 'Error',
+                icon: 'error',
+                text: 'An error occurred while updating item quantity. Please try again later.'
             });
+        });
     };
 
     const increaseQuantity = (productId) => {
@@ -242,5 +242,4 @@ export default function Cart(props) {
             )}
         </div>
     );
-
 }
