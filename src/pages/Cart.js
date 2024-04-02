@@ -202,7 +202,7 @@ export default function Cart(props) {
 
     return (
         <div className="container">
-            <h2 className="my-5 pt-5">Shopping Cart</h2>
+            <h1 className="my-5 pt-5 text-center">Shopping Cart</h1>
             {cart && cart.cartItems && cart.cartItems.length > 0 ? (
                 <div>
                     {cart.cartItems.map(item => (
