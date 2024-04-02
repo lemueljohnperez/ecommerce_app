@@ -37,7 +37,7 @@ export default function OrderPage() {
 
         const fetchProductsDetails = (ordersData) => {
             const productIds = ordersData.flatMap(order => order.productsOrdered.map(product => product.productId));
-            fetch(`${process.env.REACT_APP_API_URL}/products?ids=${productIds.join(',')}`)
+            fetch(`${process.env.REACT_APP_API_BASE_URL}/products?ids=${productIds.join(',')}`)
                 .then(res => res.json())
                 .then(data => {
                     const productsData = data.products;
