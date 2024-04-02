@@ -130,6 +130,7 @@ export default function Login(props) {
                                             required
                                         />
                                     </Form.Group>
+
                                     <Form.Group>
                                         <Form.Label>Password:</Form.Label>
                                         <Form.Control
@@ -140,11 +141,15 @@ export default function Login(props) {
                                             required
                                         />
                                     </Form.Group>
-                                    {isActive ?
-                                        <Button variant="primary" type="submit" id="submitBtn" className="w-100">Submit</Button>
-                                        :
-                                        <Button variant="danger" type="submit" id="submitBtn" disabled className="w-100">Submit</Button>
-                                    }
+
+                                    <Form.Group className="text-center mt-4">
+                                        {isActive ?
+                                            <Button variant="primary" type="submit" id="submitBtn" className="w-100">Submit</Button>
+                                            :
+                                            <Button variant="danger" type="submit" id="submitBtn" disabled className="w-100">Submit</Button>
+                                        }
+                                    </Form.Group>
+                                    <p className="text-center">Already have an account? <Link to="/register" style={{ color: 'blue' }}>Click here</Link> to register.</p>
                                 </Form>
                             </div>
                         </Col>
